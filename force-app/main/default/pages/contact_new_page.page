@@ -1,0 +1,45 @@
+<apex:page showHeader="false"  sidebar="false" title="Contact" controller="accountpageController">
+    <apex:pagemessages />
+    <apex:form > 
+        <apex:actionFunction action="{!showAccount}" name="showContact"/>
+        <apex:pageBlock mode="edit">
+            <apex:pageBlockButtons > 
+                <apex:commandButton value="Save" action="{!saveContact}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Contact" collapsible="false" columns="2" >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Account Name</apex:outputLabel>
+                    <apex:inputText value="{!accid}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >First Name</apex:outputLabel>
+                    <apex:inputField value="{!con.FirstName}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Last Name</apex:outputLabel>
+                    <apex:inputField value="{!con.LastName}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Phone No.</apex:outputLabel>
+                    <apex:inputField value="{!con.Phone}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Birthdate</apex:outputLabel>
+                    <apex:inputField value="{!con.Birthdate}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Title</apex:outputLabel>
+                    <apex:inputField value="{!con.Title}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Department</apex:outputLabel>
+                    <apex:inputField value="{!con.Department }"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Email</apex:outputLabel>
+                    <apex:inputField value="{!con.Email}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

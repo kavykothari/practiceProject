@@ -1,0 +1,41 @@
+<apex:page showHeader="false" title="Inline Oppurtunity Controller" extensions="OppurtunityController" standardController="Account">
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:form >
+        <apex:pageBlock title="New Opportunity">
+            <apex:pageBlockButtons >
+            	<apex:commandButton value="save" action="{!HandelInlineSave}" reRender="redirectpage" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2" title="Opportunity Information " collapsible="false">
+                <apex:pageBlockSectionItem >
+                    	<apex:outputLabel > Name </apex:outputLabel>
+                    	<apex:inputField value="{!opportunity.Name}"/>
+                </apex:pageBlockSectionItem>
+                
+                 <apex:pageBlockSectionItem >
+                    	<apex:outputLabel > Amount </apex:outputLabel>
+                    	<apex:inputField value="{!opportunity.Amount}"/>
+                </apex:pageBlockSectionItem>
+                
+                
+                 <apex:pageBlockSectionItem >
+                    	<apex:outputLabel > Closed Date </apex:outputLabel>
+                    	<apex:inputField value="{!opportunity.CloseDate}"/>
+                </apex:pageBlockSectionItem>
+                
+                
+                 <apex:pageBlockSectionItem >
+                    	<apex:outputLabel > Stage </apex:outputLabel>
+                    	<apex:inputField value="{!opportunity.StageName}"/>
+                </apex:pageBlockSectionItem>
+                <apex:outputPanel id="redirectpage">
+                	<apex:outputLabel rendered="{!isLoad}">
+                        <script>
+                        //alert('working here');
+                        	window.top.location.href="{!PageUrl}";
+                        </script>
+                    </apex:outputLabel>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

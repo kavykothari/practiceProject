@@ -1,0 +1,38 @@
+<apex:page sidebar="false" showHeader="false" standardController="Opportunity " >
+    <apex:pageMessages />
+    <apex:form >
+        <apex:pageBlock title="Opportunity Detail">
+            <apex:pageBlockSection title="Opportunity Information" collapsible="false" >   
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel > Opportunity Owner </apex:outputLabel> 
+                    <apex:outputText >{!$User.FirstName} {!$User.LastName}</apex:outputText> 
+                </apex:pageBlockSectionItem>
+                <apex:outputField value="{!Opportunity.Amount}"/> 
+                <apex:outputField value="{!Opportunity.IsPrivate}"/> 
+                <apex:outputField value="{!Opportunity.CloseDate}"/> 
+                <apex:outputField value="{!Opportunity.Name}"/> 
+                <apex:outputField value="{!Opportunity.NextStep}"/> 
+                <apex:outputField value="{!Opportunity.Accountid}"/>
+                <apex:outputField value="{!Opportunity.StageName}"/>
+                <apex:outputField value="{!Opportunity.Type}"/>
+                
+                <apex:outputField value="{!Opportunity.Probability}"/> 
+                <apex:outputField value="{!Opportunity.LeadSource}"/> 
+                <apex:outputField value="{!Opportunity.CampaignId}"/> 
+                <apex:outputField value="{!Opportunity.Discount__c}"/>
+                
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Opportunity Information" collapsible="false" columns="2">
+                <apex:outputField value="{!Opportunity.OrderNumber__c}"/> 
+                <apex:outputField value="{!Opportunity.MainCompetitors__c}"/> 
+                <apex:outputField value="{!Opportunity.CurrentGenerators__c}"/> 
+                <apex:outputField value="{!Opportunity.DeliveryInstallationStatus__c}"/> 
+                <apex:outputField value="{!Opportunity.TrackingNumber__c}"/> 
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Description Information" collapsible="false" columns="2">
+                <apex:outputField value="{!Opportunity.Description}"/> 
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

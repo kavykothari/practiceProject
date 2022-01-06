@@ -1,0 +1,28 @@
+<apex:page showHeader="false" title="Contact Wrapper Learning " controller="ContactReadonlyWrapper" >
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection columns="1" collapsible="false" title="Contact Records">
+                <apex:commandButton value="Get Value" action="{!handelSelectedContact}" />
+                <apex:pageBlockTable value="{!ContactWrapperList}" var="contactwrapper">
+                    <apex:column headervalue="S no." value="{!contactwrapper.index}"/>
+                    <apex:column headerValue="Action" >
+                        <apex:inputCheckbox value="{!contactwrapper.isCheck}"/>
+                            
+                    </apex:column>
+                    <apex:column value="{!contactwrapper.contact.FirstName}" />
+                    <apex:column value="{!contactwrapper.contact.LastName}" />
+                    <apex:column value="{!contactwrapper.contact.Email}" />
+                    <apex:column value="{!contactwrapper.contact.Phone}" />
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection collapsible="false" columns="1" title="Selected Records">
+            	<apex:pageBlockTable value="{!ContactList}" var="contact" >
+                	 <apex:column value="{!contact.FirstName}" />
+                    <apex:column value="{!contact.LastName}" />
+                    <apex:column value="{!contact.Email}" />
+                    <apex:column value="{!contact.Phone}" />
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form> 
+</apex:page>

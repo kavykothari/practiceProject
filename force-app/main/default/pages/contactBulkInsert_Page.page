@@ -1,0 +1,23 @@
+<apex:page showHeader="false" title="Contact bulk Entry" controller="ContactBulkInsertion">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="save" action="{!savebutton}"/>
+                <apex:commandButton value="Cancel" action="{!cancelbutton}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1" title="Bulk Insert Contact List" collapsible="false">
+                <apex:pageBlockTable value="{!BulkInsertContactList}" var="splitValue">
+                    <apex:column headerValue="First name">
+                        <apex:inputField value="{!splitValue.FirstName}"/>
+                    </apex:column>
+                    <apex:column headerValue="Last name">
+                        <apex:inputField value="{!splitValue.LastName}"/>
+                    </apex:column>
+                    <apex:column headerValue="Account">
+                        <apex:inputField value="{!splitValue.AccountId}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,38 @@
+<apex:page title="Search Contacts" sidebar="false" showHeader="false" controller="SearchContactController" >
+    <apex:sectionHeader title="Contacts" subtitle="Search"/>
+    <apex:form id="pd">
+        <apex:messages />
+        <apex:actionFunction action="{!limitContactData}" name="getLimit" reRender="pd" />
+        <apex:pageBlock >
+            <apex:pageBlockSection collapsible="false" columns="1" >
+                <apex:pageBlockSectionItem >
+                    <apex:outputPanel >
+                        <apex:inputText html-placeholder="Search Text Here" value="{!getTextVlaue}" />
+                        <apex:commandButton value="Serach" style="margin-left:10px;" action="{!doSerach}" reRender="pd" />
+                        <apex:selectList size="1" style="float:right" value="{!pageSize}" onchange="getLimit();" >
+                            <apex:selectOption itemValue="5"  itemLabel="5"></apex:selectOption>
+                            <apex:selectOption itemValue="10"  itemLabel="10"></apex:selectOption>
+                            <apex:selectOption itemValue="15"  itemLabel="15"></apex:selectOption>
+                            <apex:selectOption itemValue="20"  itemLabel="20"></apex:selectOption>
+                            <apex:selectOption itemValue="100"  itemLabel="100"></apex:selectOption>
+                        </apex:selectList>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockTable value="{!contactList}" var="con" rendered="{!(contactList.size != 0)}">
+                    <apex:column value="{!con.Name}"/>
+                    <apex:column value="{!con.Email}"/>
+                    <apex:column value="{!con.Account.Name}"/>
+                    <apex:column value="{!con.Phone}"/>
+                    <apex:column value="{!con.Type__c}"/>
+                </apex:pageBlockTable>
+                <apex:outputText rendered="{!(contactList.size = 0)}" value="Record are not founded."/>
+                <apex:outputPanel style="float:right" rendered="{!(contactList.size != 0)}">
+                    <apex:commandButton value="First" reRender="pd" action="{!firstPage}" disabled="{!FirstAndPrevious}"/>  
+                    <apex:commandButton value="Previous" reRender="pd" action="{!previousPage}" disabled="{!FirstAndPrevious}" />  
+                    <apex:commandButton value="Next" reRender="pd" action="{!nextPage}" disabled="{!LastAndNext}"/>  
+                    <apex:commandButton value="Last" reRender="pd" action="{!lastPage}" disabled="{!LastAndNext}"/>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

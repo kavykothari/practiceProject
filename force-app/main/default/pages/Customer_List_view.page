@@ -1,0 +1,76 @@
+<apex:page showHeader="false" title="customer List View" controller="CustomerController">
+    <apex:pageMessages />
+    <!--  <apex:pagemessages /> -->
+    <apex:form >
+        
+        
+        <apex:pageBlock >   
+           <!-- <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="First" action="{!FirstButton}" />
+                <apex:commandButton value="Previous" action="{!customerPreviousButton}" />
+                <apex:commandButton value="Next" action="{!customerNextButton}"  />
+                <apex:commandButton value="Last" action="{!LastButton}"  />
+
+                
+                
+                </apex:pageBlockButtons> -->
+                
+            
+            <!--    <apex:pageBlockButtons>
+                <apex:commandButton value="save" />
+                </apex:pageBlockButtons>-->
+            <apex:pageBlockSection title="Search Field" collapsible="false" columns="2">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel > Search </apex:outputLabel>
+                    <apex:inputText value="{!searchValue}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton value="Search" action="{!SearchCustomer}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" > 
+                
+                <apex:variable var="srno" value="{!((PageNumber-1)*(PageSize))}"/>       	
+                <apex:pageBlockTable value="{!Customerlist}" var="customer">
+                    <apex:column headerValue="Sr no.">
+                        <apex:variable var="srno" value="{!srno+1}"/>  
+                    {!srNo}
+                    
+                    </apex:column>
+                   <apex:column headerValue="Action">
+                        <apex:commandLink value="Edit" action="{!EditCustomer}" >
+                            <apex:param name="editId" value="{!customer.Id}" assignTo="{!customerId}"/> <!-- page se value ko controller pe send krne ke liye we use param -->
+                        </apex:commandLink> ||  
+                       
+                       <apex:commandLink value="View" action="{!ViewCustomer}" >
+                            <apex:param name="viewId" value="{!customer.Id}" assignTo="{!cusId}"/> <!-- page se value ko controller pe send krne ke liye we use param -->
+                        </apex:commandLink> || 
+                       
+                       <apex:commandLink value="Delete" action="{!DeleteCustomer}" >
+                            <apex:param name="delete" value="{!customer.Id}" assignTo="{!customerId}"/> <!-- page se value ko controller pe send krne ke liye we use param -->
+                        </apex:commandLink> || 
+                        
+                        <apex:commandLink value="Clone" action="{!CloneCustomer}" >
+                            <apex:param name="Clone" value="{!customer.Id}" assignTo="{!customerId}"/>  <!-- page se value ko controller pe send krne ke liye we use param -->
+                            
+                        </apex:commandLink> 
+                       
+                        
+                    </apex:column>
+                    <apex:column value="{!customer.First_Name__c}"/>            	
+                    <apex:column value="{!customer.Last_Name__c}"/>
+                    <apex:column value="{!customer.Gender__c}"/>
+                    <apex:column value="{!customer.Email__c}"/>
+                    <apex:column value="{!customer.Phone__c}"/>
+                    
+                    
+                </apex:pageBlockTable>
+              <!-- <apex:outputLabel>
+                     {!(PageNumber-1)*(PageSize+1)} - {!if(PageNumber*PageSize < ResultSize, PageNumber * PageSize, ResultSize)} of {!ResultSize}
+                </apex:outputLabel> -->
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+    
+</apex:page>

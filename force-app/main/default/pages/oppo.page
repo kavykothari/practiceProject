@@ -1,0 +1,65 @@
+<apex:page sidebar="false" showHeader="false" standardController="Opportunity " >
+    <apex:pageMessages />
+        <apex:form >
+      
+                        <apex:pageBlock title="Opportunity Edit">
+                            <apex:pageBlockButtons >
+            				<apex:commandButton value="Save" action="{!save}"/>
+                                <apex:commandButton value="close" action="{!cancel}" />
+                                   <apex:commandButton value="Delete" action="{!Delete}" />
+
+                                     <apex:commandButton value="edit" action="{!edit}" />
+                                </apex:pageBlockButtons>
+
+                            <apex:pageBlockSection title="Opportunity Information" collapsible="false" >   
+                                <apex:pageBlockSectionItem >
+                                <apex:outputLabel > Opportunity Owner </apex:outputLabel> 
+                                     
+                                 <apex:outputText >{!$User.FirstName} {!$User.LastName}</apex:outputText> 
+                                    </apex:pageBlockSectionItem>
+                                
+                                <apex:inputField value="{!Opportunity.Amount}"/> 
+                                 <apex:inputField value="{!Opportunity.IsPrivate}"/> 
+                                 <apex:inputField value="{!Opportunity.CloseDate}"/> 
+                                 <apex:inputField value="{!Opportunity.Name}"/> 
+                                 <apex:inputField value="{!Opportunity.NextStep}"/> 
+                                <apex:inputField value="{!Opportunity.Accountid}"/>
+                                <apex:inputField value="{!Opportunity.StageName}"/>
+                                <apex:inputField value="{!Opportunity.Type}"/>
+
+                                 <apex:inputField value="{!Opportunity.Probability}"/> 
+                                 <apex:inputField value="{!Opportunity.LeadSource}"/> 
+                                 <apex:inputField value="{!Opportunity.CampaignId}"/> 
+                                 <apex:inputField value="{!Opportunity.Discount__c}"/>
+                                   
+                                                     </apex:pageBlockSection>
+            
+                                
+                              <apex:pageBlockSection title="Opportunity Information" collapsible="false" columns="2">
+                                  
+                               
+                              <apex:inputField value="{!Opportunity.OrderNumber__c}"/> 
+                              <apex:inputField value="{!Opportunity.MainCompetitors__c}"/> 
+                              <apex:inputField value="{!Opportunity.CurrentGenerators__c}"/> 
+                              <apex:inputField value="{!Opportunity.DeliveryInstallationStatus__c}"/> 
+                                  <apex:inputField value="{!Opportunity.TrackingNumber__c}"/> 
+                              
+                                
+                              
+                                          
+                                    
+                                
+                                
+                            </apex:pageBlockSection>
+                                
+                              <apex:pageBlockSection title="Description Information" collapsible="false" columns="2">
+                                  
+                               
+                              <apex:inputField value="{!Opportunity.Description}"/> 
+                           
+                                
+                            </apex:pageBlockSection>
+            
+                        </apex:pageBlock>
+        </apex:form>
+</apex:page>

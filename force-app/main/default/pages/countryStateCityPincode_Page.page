@@ -1,0 +1,135 @@
+<apex:page showHeader="false" title="Country State City Pincode" controller="CountryStateCityPincode">
+    <apex:form >
+        <apex:actionFunction name="changeCountry" action="{!handelCountryChange}"/>
+        <apex:actionFunction name="changeState" action="{!handelStateChange}"/>
+        <apex:actionFunction name="changecity" action="{!handelCityChange}"/>
+        <apex:actionFunction name="pincode" action="{!pincodechange}"/>
+        <apex:actionFunction name="ChangeHobbies" action="{!gethobbies}"/>
+        <apex:actionFunction name="ChangeGender" action="{!getgender}"/>
+        
+        
+        
+        
+        <apex:pageBlock >
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Select Country </apex:outputLabel>
+                    <apex:selectList size="1" value="{!SelectedCountry}" onchange="changeCountry();">
+                        <apex:selectOptions value="{!CountryOptionList}">
+                        </apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Select State </apex:outputLabel>
+                    <apex:selectList size="1" value="{!SelectedState}" onchange="changeState();" disabled="{!(if(SelectedCountry=='',true,false))}">
+                        <apex:selectOptions value="{!StateOptionList}" >
+                        </apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Select City </apex:outputLabel>
+                    <apex:selectList size="1" value="{!SelectedCity}" onchange="changeCity();" disabled="{!(if(SelectedState=='',true,false)||(if(SelectedCountry=='',true,false)))}">
+                        <apex:selectOptions value="{!CityOptionList}">
+                        </apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Pincode </apex:outputLabel>
+                    <apex:inputText value="{!pincodechange}" onchange="changeCity();"  />
+                    
+                    
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSection columns="3" collapsible="false">
+                    
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Select Course </apex:outputLabel>
+                        <apex:selectCheckboxes value="{!CheckboxSelectedCourse}">
+                            <apex:selectOption itemvalue="java" itemlabel="Java"></apex:selectOption>
+                            <apex:selectOption itemvalue="python" itemlabel="Python"></apex:selectOption>
+                            <apex:selectOption itemvalue="c++" itemlabel="C++"></apex:selectOption>
+                            <apex:selectOption itemvalue="android" itemlabel="Android"></apex:selectOption>
+                            <apex:selectOption itemvalue="php" itemlabel="Php"></apex:selectOption>
+                        </apex:selectCheckboxes>
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Selected Course</apex:outputLabel>
+                        <apex:outputText >{!CheckboxSelectedCourse}</apex:outputText>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:commandButton value="get course" action="{!getcourse}"/>
+                    </apex:pageBlockSectionItem>
+                    
+                </apex:pageBlockSection>
+                
+                
+                <apex:pageBlockSection columns="3" collapsible="false">
+                    
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Select Hobbies </apex:outputLabel>
+                        <apex:selectCheckboxes value="{!CheckboxSelectedHobbies}" onchange="ChangeHobbies();" >
+                            <apex:selectOptions value="{!HobbiesoptionList}"></apex:selectOptions>
+                            
+                        </apex:selectCheckboxes>
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem rendered="{!valueassigned}">
+                        <apex:outputLabel >Selected Hobbies</apex:outputLabel>
+                        <apex:outputText >{!CheckboxSelectedHobbies}</apex:outputText>
+                    </apex:pageBlockSectionItem>
+                    
+                </apex:pageBlockSection>
+                <apex:pageBlockSection columns="3" collapsible="false">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Select Status</apex:outputLabel>
+                        <apex:selectRadio value="{!SelectedStatus}">
+                            <apex:selectOption itemValue="active" itemLabel="Active"></apex:selectOption>
+                            <apex:selectOption itemValue="inactive" itemLabel="Inactive"></apex:selectOption>
+                            <apex:selectOption itemValue="complete" itemLabel="Complete"></apex:selectOption>
+                            
+                        </apex:selectRadio>
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel rendered="{!renderOfStatus}">Selected Status</apex:outputLabel>
+                        <apex:outputText >{!SelectedStatus}</apex:outputText>
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:commandButton value="Get Status" action="{!status}"/>
+                        <apex:commandButton value="Remove Status" action="{!removeStatus}" rendered="{!renderOfStatus}"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                
+                <apex:pageBlockSection columns="3" collapsible="false">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Select Gender</apex:outputLabel>
+                        <apex:selectRadio value="{!SelectedGender}" onchange="ChangeGender();">
+                            <apex:selectOptions value="{!radioButtonGender}"></apex:selectOptions>
+                        </apex:selectRadio>
+                    </apex:pageBlockSectionItem>
+                    
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel >Selected Gender</apex:outputLabel>
+                            <apex:outputText >{!SelectedGender}</apex:outputText>
+                        </apex:pageBlockSectionItem>
+                       
+                        <apex:pageBlockSectionItem >
+                           <apex:commandButton value="Remove Selected " action="{!removeGender}" rendered="{!renderOfgender}"/>  
+                        </apex:pageBlockSectionItem>
+                  
+                </apex:pageBlockSection>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel > selected Country</apex:outputLabel>
+                    <apex:outputText >{!SelectedState}</apex:outputText>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

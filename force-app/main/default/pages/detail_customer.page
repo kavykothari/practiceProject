@@ -1,0 +1,81 @@
+<apex:page sidebar="false" showHeader="false" Controller="CustomerController" >
+    <apex:pageMessages />
+    <apex:form >
+        <apex:pageBlock title="Customer Detail">
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Back" action="{!BackButton}"/>
+           </apex:pageBlockButtons> <apex:pageBlockSection title="Customer Information" collapsible="false" >
+           
+             <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >First Name </apex:outputLabel>
+                    <apex:outputField value="{!customer.First_Name__c}" />     
+                </apex:pageBlockSectionItem>
+                
+                
+                <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >Last Name </apex:outputLabel>
+                    <apex:outputField value="{!customer.Last_Name__c}" />       
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >Gender </apex:outputLabel>
+                    <apex:outputField value="{!customer.Gender__c}" />         
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >Address </apex:outputLabel>
+                    <apex:outputField value="{!customer.Address__c}" />         
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >City </apex:outputLabel>
+                    <apex:outputField value="{!customer.City__c}" />         
+                </apex:pageBlockSectionItem>
+                
+                 <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >Email </apex:outputLabel>
+                    <apex:outputField value="{!customer.Email__c}" />         
+                </apex:pageBlockSectionItem>
+                
+                 <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >Phone </apex:outputLabel>
+                    <apex:outputField value="{!customer.Phone__c}" />         
+                </apex:pageBlockSectionItem>
+                
+                 <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >Married </apex:outputLabel>
+                    <apex:outputField value="{!customer.Married__c}" />         
+                </apex:pageBlockSectionItem>
+                
+                 <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >Nationality </apex:outputLabel>
+                     <apex:outputField value="{!customer.Nationality__c}"/>
+	                </apex:pageBlockSectionItem>
+                
+                 <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >Owner </apex:outputLabel>
+                    <apex:outputField value="{!customer.OwnerId}" />         
+                </apex:pageBlockSectionItem>
+                
+                
+                
+            </apex:pageBlockSection>
+            
+            
+            
+            </apex:pageBlockSection>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

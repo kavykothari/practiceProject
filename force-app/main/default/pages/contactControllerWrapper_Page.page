@@ -1,0 +1,56 @@
+<apex:page showHeader="false"  title="Contact WrapperClass" controller="ContactControllerWrapper">
+    <apex:pageMessages ></apex:pageMessages>
+        <apex:form >
+            <apex:actionFunction name="checkboxClick" action="{!HandelCheckBox}" reRender="checkbox"/>
+            <apex:pageBlock id="checkbox" >
+                <apex:pageBlockSection title="Contact Infromation" collapsible="false" columns="1">
+                    <apex:commandButton value="Save" action="{!saveButton}"/>
+                </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="1">
+                    <apex:pageBlockTable value="{!contactWrappList}" var="contactWrapp">
+                        
+                        <apex:column headerValue="Sr No." value="{!contactWrapp.index}"/>
+                        
+                          <apex:column headerValue="Action" >
+                            <apex:commandLink value="Delete" action="{!deleteData}" >
+                              <apex:param value="{!contactWrapp.index-1}" name="isDelete" assignTo="{!contactWrapp.isDelete}"/>
+                              </apex:commandLink>
+                        </apex:column>
+                        
+                        <apex:column headerValue="Select" >
+                            <apex:inputCheckbox value="{!contactWrapp.isCheck}" onchange="checkboxClick();" />
+                        </apex:column>
+                        
+                        <apex:column value="{!contactWrapp.contact.FirstName}" rendered="{!(if(contactWrapp.isCheck==true,false,true))}"/>
+                        <apex:column headerValue="First Name" rendered="{!(if(contactWrapp.isCheck==true,true,false))}">
+                        	<apex:inputField value="{!contactWrapp.contact.FirstName}" rendered="{!(if(contactWrapp.isCheck==true,true,false))}"/>
+                        </apex:column>
+                        
+                        
+                        <apex:column value="{!contactWrapp.contact.LastName}" rendered="{!(if(contactWrapp.isCheck==true,false,true))}"/>
+                         <apex:column headerValue="Last Name" rendered="{!(if(contactWrapp.isCheck==true,true,false))}">
+                        	<apex:inputField value="{!contactWrapp.contact.LastName}" />
+                        </apex:column>
+                        
+                        
+                        <apex:column value="{!contactWrapp.contact.Phone}" rendered="{!(if(contactWrapp.isCheck==true,false,true))}"/>
+                         <apex:column headerValue="Phone" rendered="{!(if(contactWrapp.isCheck==true,true,false))}">
+                        	<apex:inputField value="{!contactWrapp.contact.Phone}" />
+                        </apex:column>
+                        
+                        
+                        <apex:column value="{!contactWrapp.contact.Email}" rendered="{!(if(contactWrapp.isCheck==true,false,true))}"/>
+                         <apex:column headerValue="Email" rendered="{!(if(contactWrapp.isCheck==true,true,false))}">
+                        	<apex:inputField value="{!contactWrapp.contact.Email}" />
+                        </apex:column>
+                        <apex:column value="{!contactWrapp.contact.Experience__c}" rendered="{!(if(contactWrapp.isCheck==true,false,true))}"/>
+                        <apex:column headerValue="Experience" rendered="{!(if(contactWrapp.isCheck==true,true,false))}">
+                        	<apex:inputField value="{!contactWrapp.contact.Experience__c}" />
+                        </apex:column>
+                        
+                        
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:form>
+</apex:page>

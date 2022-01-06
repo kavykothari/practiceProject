@@ -1,0 +1,47 @@
+<apex:page showHeader="false" controller="DreamCity" >
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection columns="3" title="Add Values" collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Enter Value</apex:outputLabel>
+                    <apex:inputText value="{!getedvalue}"/>
+                    
+                </apex:pageBlockSectionItem>
+                
+                 <apex:pageBlockSectionItem >
+                    <apex:commandButton value="Add" action="{!addButton}"/>
+                </apex:pageBlockSectionItem>
+                
+                 <apex:pageBlockSectionItem >
+                    <apex:selectList size="1">
+                        <apex:outputLabel > Selected Values</apex:outputLabel>
+                     	<apex:selectOptions value="{!selectedinputList}">
+                        
+                        </apex:selectOptions>
+                     </apex:selectList>
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    	<apex:pageBlock >
+        	<apex:pageBlockSection title="List View" collapsible="false" columns="3" >
+            	<apex:pageBlockSectionItem >
+                    <apex:variable var="srno" value="{!0}"/>
+                	<apex:pageBlockTable value="{!selectedinputList}" var="slected" >
+                         <apex:column headerValue="srno">
+                    <apex:variable var="srno" value="{!srno+1}"/>  
+                    {!srno}
+                    
+                    </apex:column>
+                    	<apex:column value="{!slected.Value}"/>
+                        <apex:column >
+                            <apex:commandLink value="Remove" action="{!removing}">
+                                <apex:param name="removeElement" value="{!srno}"  assignTo="{!indexx}"/>
+                            </apex:commandLink>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

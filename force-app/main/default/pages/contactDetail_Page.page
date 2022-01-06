@@ -1,0 +1,22 @@
+<apex:page title="Contact List" showHeader="false" Controller="AccountPageControler"  >
+    <apex:form >
+        <apex:pageMessages />
+        <apex:pageBlock >
+            <apex:pageBlockSection columns="1" title="Contact List" collapsible="false">
+                <apex:variable var="rowNo" value="{!0}"/>
+                <apex:pageBlockTable value="{!contactList}" var="contact" rendered="{!(contactList.size != 0)}">
+                    <apex:column headerValue="Sr.No">
+                        <apex:variable var="rowNo" value="{!rowNo+1}"/>
+                        {!rowNo}
+                    </apex:column>
+                    <apex:column value="{!contact.FirstName}"/>
+                    <apex:column value="{!contact.Account.Rating}"/>
+                    <apex:column value="{!contact.LastName}"/>
+                    <apex:column value="{!contact.AccountID}"/>
+                    <apex:column value="{!contact.Phone}"/>
+                    <apex:column value="{!contact.Email}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

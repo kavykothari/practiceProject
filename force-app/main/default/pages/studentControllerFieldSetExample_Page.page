@@ -1,0 +1,25 @@
+<apex:page showHeader="false" title=" Student Field Set"  controller="StudentController" >
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="top">
+            	<apex:commandButton value="Save" action="{!saveButton}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection collapsible="false" title="Student Add">
+                <apex:repeat value="{!$ObjectType.Student__c.fieldsets.add_student}" var="field">
+                    <apex:inputField value="{!student[field]}"/>
+                </apex:repeat>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="1" collapsible="false" title="Student List View">
+                <apex:pageBlockSectionItem >
+                    <apex:pageBlockTable value="{!studentList}" var="student">
+                        <apex:repeat value="{!$ObjectType.Student__c.fieldsets.student_list}" var="field">
+                            <apex:column value="{!student[field]}"/>
+                        </apex:repeat>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

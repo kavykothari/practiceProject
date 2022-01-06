@@ -1,0 +1,47 @@
+<apex:page showHeader="false" title="Add New Lead" controller="LeadController">
+    <!--  <apex:pagemessages /> -->
+    <apex:pagemessages /> 
+    
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="save" action="{!addLead}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >First Name </apex:outputLabel>
+                    <apex:inputField value="{!lead.FirstName}" />     
+                </apex:pageBlockSectionItem>
+                
+                
+                <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >Last Name </apex:outputLabel>
+                    <apex:inputField value="{!lead.LastName}" />       
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >Company </apex:outputLabel>
+                    <apex:inputField value="{!lead.Company}" />         
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >Status </apex:outputLabel>
+                    <apex:inputField value="{!lead.Status}" />         
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    
+                    <apex:outputLabel >Phone </apex:outputLabel>
+                    <apex:inputField value="{!lead.Phone}" />         
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+    </apex:form>>
+    
+</apex:page>

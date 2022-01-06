@@ -1,0 +1,31 @@
+<apex:page title="Contact List" showHeader="false" Controller="ContactController"  >
+    <apex:form >
+        <apex:pageMessages />
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Serach Contact" collapsible="false" columns="3" >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >First and Last Name</apex:outputLabel>
+                    <apex:inputText value="{!Name}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Account Name</apex:outputLabel>
+                    <apex:inputField value="{!con.AccountId}" />
+                </apex:pageBlockSectionItem>
+                <apex:commandButton value="Serach" action="{!searchContact}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" title="Contact List" collapsible="false">
+                <apex:variable var="rowNo" value="{!0}"/>
+                <apex:pageBlockTable value="{!contactList}" var="contact" rendered="{!(contactList.size != 0)}">
+                    <apex:column headerValue="Sr.No">
+                        <apex:variable var="rowNo" value="{!rowNo+1}"/>
+                        {!rowNo}
+                    </apex:column>
+                    <apex:column value="{!contact.FirstName}"/>
+                    <apex:column value="{!contact.LastName}"/>
+                    <apex:column value="{!contact.AccountID}"/>
+                </apex:pageBlockTable>
+                <apex:outputText rendered="{!(contactList.size = 0)}" value="Record are not founded."/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

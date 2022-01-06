@@ -1,0 +1,35 @@
+<apex:page showHeader="false" title="list view of opportunity" standardController="Opportunity" recordSetVar="Opportunities">
+    <apex:pageBlock >
+        <apex:form >
+            <apex:pageBlockSection columns="1">
+                <apex:variable var="srNo" value="{!((PageNumber-1)*(PageSize))}"/>   
+                <apex:pageBlockTable value="{!Opportunities}" var="opportunity">
+                    <apex:column headerValue="Sr No.">
+                        <apex:variable var="srNo" value="{!srNo+1}"/>
+                        
+                        {!srNo}
+                    </apex:column>
+                    <apex:column headerValue="Action">
+                    </apex:column>
+                    <apex:column value="{!opportunity.Name}"/>
+                    <apex:column value="{!opportunity.AccountId}"/>
+                    <apex:column value="{!opportunity.Amount}"/>
+                    <apex:column value="{!opportunity.CloseDate}"/>
+                    <apex:column value="{!opportunity.StageName}"/>
+                    <apex:column headerValue="Owner">
+                        <apex:outputField value="{!opportunity.Ownerid}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+                <!--<apex:variable var="srNo" value="{!srNo}"/>-->
+                <apex:panelGroup >
+                    <apex:commandButton value="First" action="{!first}" />
+                    <apex:commandButton value="Next" action="{!next}" disabled="{! Not(HasNext)}"/>
+                    <apex:commandButton value="Previous" action="{!previous}" disabled="{! Not(HasPrevious)}"  ></apex:commandButton>
+                    <apex:commandButton value="Last" action="{!last}" />
+                </apex:panelGroup>  
+            </apex:pageBlockSection>
+            <!--   <apex:outputText value=" page number{!PageNumber}  page size{!PageSize} total size{!ResultSize}   of {! CEILING(ResultSize / PageSize) }"/>-->         
+            <apex:outputText value=" page number{!PageNumber} <records per pag page size{!PageSize} total size{!ResultSize}   of {!ResultSize} {! FLOOR(ResultSize / PageSize) } "></apex:outputText> 
+        </apex:form>
+    </apex:pageBlock>
+</apex:page>

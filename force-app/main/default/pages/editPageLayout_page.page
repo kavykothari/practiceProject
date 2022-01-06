@@ -1,0 +1,39 @@
+<apex:page showHeader="false" title="Account details or Edit page" standardController="Opportunity" >
+    <apex:form >
+        <apex:pageBlock title="Detail View" >
+            <apex:pageBlockSection columns="2" >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Account Owner</apex:outputLabel>
+                    <apex:outputField value="{!Opportunity.OwnerId}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Amount</apex:outputLabel>
+                    <apex:outputField value="{!Opportunity.Amount}" />
+                </apex:pageBlockSectionItem>
+                
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Private</apex:outputLabel>
+                    <apex:outputField value="{!Opportunity.IsPrivate}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >	Expected Revenue</apex:outputLabel>
+                    <apex:outputField value="{!Opportunity.ExpectedRevenue}" />
+                </apex:pageBlockSectionItem>
+                
+                
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Account Owner</apex:outputLabel>
+                    <apex:outputField value="{!Opportunity.OwnerId}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Amount</apex:outputLabel>
+                    <apex:outputField value="{!Opportunity.Amount}" />
+                </apex:pageBlockSectionItem>
+                
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

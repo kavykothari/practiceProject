@@ -1,0 +1,45 @@
+<apex:page title="Email Assignment With Wrapper" controller="EmailAssignmentClass">
+    <apex:pageMessages ></apex:pageMessages>
+
+    <apex:form id="pb" >
+        <apex:pageBlock title="Email Assignment With Wrapper">
+            <apex:pageBlockSection title="Select Contact" collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:selectList size="1" value="{!selectedName}">
+                        <apex:selectOptions value="{!contactNameOptionList}" />
+                        <apex:actionSupport event="onchange" action="{!getName}" reRender="pb"></apex:actionSupport>
+                    </apex:selectList>
+                    <apex:outputPanel >
+                        <apex:commandButton value="Add" action="{!addButton}" />
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Details Of Selected Contact" collapsible="false">
+                <!--<apex:outputLabel value="{!selectedName}"></apex:outputLabel>-->
+                <apex:pageBlockTable value="{!filterContactList}" var="contact">
+                    <apex:column headerValue="Select" >
+                        <apex:inputCheckbox value="{!contact.isCheck}"/>
+                    </apex:column>
+                    <apex:column headerValue="Name" value="{!contact.contact.name}"/>
+                    <apex:column headerValue="Email" value="{!contact.contact.email}"/>
+                    <apex:column headerValue="Attachment" value="{!contact.attachment.Name}"/>
+                </apex:pageBlockTable> 
+                
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton value="Send" action="{!sendButton}" /> 
+                    <apex:outputPanel >
+                        <apex:inputCheckbox value="{!attachmentChecked}" >
+                        <apex:actionSupport event="onchange" action="{!handelWithAttachmentChecked}"/>
+                        </apex:inputCheckbox>With Attachment
+                    </apex:outputPanel>
+                    
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+    </apex:form>
+    
+</apex:page>
